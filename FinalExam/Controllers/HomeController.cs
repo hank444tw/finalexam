@@ -21,7 +21,7 @@ namespace FinalExam.Controllers
         }
 
         [HttpPost]
-        public ActionResult Signin(string Mem_id,string Mem_password,string Name)
+        public ActionResult Signin(string Mem_id,string Mem_password)
         {
             var member = db.Member.Where(m => m.Mem_id == Mem_id && m.Mem_password == Mem_password).FirstOrDefault();
             if(member == null)
