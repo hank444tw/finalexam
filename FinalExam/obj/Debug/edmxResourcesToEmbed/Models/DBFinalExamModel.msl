@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBFinalExamModelStoreContainer" CdmEntityContainer="DBFinalExamEntities">
+    <EntitySetMapping Name="Member">
+      <EntityTypeMapping TypeName="DBFinalExamModel.Member">
+        <MappingFragment StoreEntitySet="Member">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Mem_id" ColumnName="Mem_id" />
+          <ScalarProperty Name="Mem_password" ColumnName="Mem_password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,9 @@
+﻿<!--登入前後Layout切換-->
+@if (Session["Member"] == null)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+else
+{
+    Layout = "~/Views/Shared/_SigninLayout.cshtml";
+}
