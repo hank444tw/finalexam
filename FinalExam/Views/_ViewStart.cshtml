@@ -1,9 +1,14 @@
 ﻿<!--登入前後Layout切換-->
-@if (Session["Member"] == null)
+@if (Session["changeLayout"] == null)
 {
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+else if ((string)Session["ChangeLayout"] == "Member") //顧客會員
+{
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
 else
 {
-    Layout = "~/Views/Shared/_SigninLayout.cshtml";
+    Layout = "~/Views/Shared/_AdministratorLayout.cshtml"; //管理者
 }
+

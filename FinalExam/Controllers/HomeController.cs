@@ -29,14 +29,22 @@ namespace FinalExam.Controllers
                 ViewBag.Message = "帳號或密碼錯誤";
                 return View();
             }
-            Session["Welcome"] = member.Name + " 你好!";  
-            Session["Member"] = member;         //_ViewStart判斷Layout切換
+
+            Session["Welcome"] = member.Name + " 你好!"; //姓名歡迎詞
+            if(member.Id == 1)  //判斷是否為管理員
+            {
+                Session["ChangeLayout"] = "Administrator";
+            }
+            else
+            {
+                Session["ChangeLayout"] = "Member";
+            }
             return RedirectToAction("Index");
         }
 
         public ActionResult Signout()
         {
-            Session["Member"] = null;
+            Session["ChangeLayout"] = null;
             return RedirectToAction("Index");
         }
     }
