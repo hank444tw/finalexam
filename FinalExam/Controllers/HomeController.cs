@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FinalExam.Models; //導入Model模型
+using System.IO;  //儲存、刪除本機資料要用到
 
 namespace FinalExam.Controllers
 { 
@@ -27,6 +28,39 @@ namespace FinalExam.Controllers
         public ActionResult MemberCenter()
         {
             return View();
+        }
+
+        public ActionResult CreateProduct()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateProduct(Product product,HttpPostedFileBase file)
+        {
+            int fid = db.Product.Max(m => m.Id) + 1 ; //找到當前最大的Id值並+1,見鬼了不用Value
+            string pathimage = Server.MapPath("~/Image/" + fid.ToString());
+            System.IO.Directory.CreateDirectory(pathimage); //新增資料夾
+
+            if (file == null || file.ContentLength == 0)//判斷檔案是否為空的
+            {
+                db.Product.Add(product);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            } 
+
+            string fileName = GetRandomStringByGuid(); //跳到取亂碼的GetRandomStringByGuid方法
+            file.SaveAs(Path.Combine(pathimage, fileName + " .png"));
+            product.ImageName = fileName;
+            db.Product.Add(product);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public static string GetRandomStringByGuid()  //使用Guid產生亂碼
+        {
+            var str = Guid.NewGuid().ToString().Replace("-", ""); //將"-"字號去掉
+            return str;
         }
 
         [HttpPost]
