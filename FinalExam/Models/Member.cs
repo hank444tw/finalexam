@@ -26,5 +26,9 @@ namespace FinalExam.Models
         [DisplayName("名稱")]
         [Required(ErrorMessage = "名稱不可空白")]
         public string Name { get; set; }
+        [DisplayName("電話")]
+        [Required(ErrorMessage = "電話不可空白")]
+        [StringLength(10,ErrorMessage ="電話號碼為10位",MinimumLength =10)]
+        public string Phone { get; set; }
     }
 }

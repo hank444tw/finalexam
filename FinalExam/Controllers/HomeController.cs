@@ -24,6 +24,11 @@ namespace FinalExam.Controllers
             return View();
         }
 
+        public ActionResult MemberCenter()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Signin(string Mem_id,string Mem_password)
         {
