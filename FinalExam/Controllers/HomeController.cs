@@ -19,6 +19,10 @@ namespace FinalExam.Controllers
         {
             return View();
         }
+        public ActionResult Signup()
+        {
+            return View();
+        }
 
         [HttpPost]
         public ActionResult Signin(string Mem_id,string Mem_password)
@@ -41,6 +45,29 @@ namespace FinalExam.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public ActionResult Signup(Member mer,string Mem_id)
+        {
+            var mid = db.Member.Where(m => m.Mem_id == Mem_id).FirstOrDefault();
+            if (ModelState.IsValid)
+            {
+                if (mid == null)
+                {
+                    db.Member.Add(mer);
+                    db.SaveChanges();
+                    ViewBag.Message = "註冊成功 ! 請重新登入";
+                    return RedirectToAction("Signin");
+                }
+                else
+                {
+                    ViewBag.Message="已經有重複的帳號";
+                    
+                }
+            }
+            return View(mer);
+        }
+
 
         public ActionResult Signout()
         {
