@@ -150,6 +150,9 @@
     <Compile Include="Models\Member.cs">
       <DependentUpon>DBFinalExamModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>DBFinalExamModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

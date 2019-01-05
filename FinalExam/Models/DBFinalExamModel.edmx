@@ -13,10 +13,21 @@
           <Property Name="Mem_id" Type="nvarchar" MaxLength="50" />
           <Property Name="Mem_password" Type="nvarchar" MaxLength="50" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
-          <Property Name="Phone" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductMoney" Type="int" Nullable="false" />
+          <Property Name="ProductIntrodution" Type="nvarchar" MaxLength="50" />
+          <Property Name="PId" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImageName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="DBFinalExamModelStoreContainer">
           <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -34,7 +45,19 @@
         </EntityType>
         <EntityContainer Name="DBFinalExamEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Member" EntityType="Self.Member" />
+          <EntitySet Name="Product" EntityType="DBFinalExamModel.Product" />
         </EntityContainer>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductMoney" Type="Int32" Nullable="false" />
+          <Property Name="ProductIntrodution" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -44,11 +67,22 @@
           <EntitySetMapping Name="Member">
             <EntityTypeMapping TypeName="DBFinalExamModel.Member">
               <MappingFragment StoreEntitySet="Member">
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Mem_id" ColumnName="Mem_id" />
                 <ScalarProperty Name="Mem_password" ColumnName="Mem_password" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="DBFinalExamModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
+                <ScalarProperty Name="ProductIntrodution" ColumnName="ProductIntrodution" />
+                <ScalarProperty Name="ProductMoney" ColumnName="ProductMoney" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

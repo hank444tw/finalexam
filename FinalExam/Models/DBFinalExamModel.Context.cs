@@ -26,5 +26,6 @@ namespace FinalExam.Models
         }
     
         public virtual DbSet<Member> Member { get; set; }
+        public virtual DbSet<Product> Product { get; set; }
     }
 }

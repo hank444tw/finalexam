@@ -12,5 +12,17 @@
   </EntityType>
   <EntityContainer Name="DBFinalExamEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Member" EntityType="Self.Member" />
+    <EntitySet Name="Product" EntityType="DBFinalExamModel.Product" />
   </EntityContainer>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductMoney" Type="Int32" Nullable="false" />
+    <Property Name="ProductIntrodution" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>
