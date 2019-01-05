@@ -8,6 +8,7 @@
     <Property Name="Mem_id" Type="nvarchar" MaxLength="50" />
     <Property Name="Mem_password" Type="nvarchar" MaxLength="50" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nchar" MaxLength="10" />
   </EntityType>
   <EntityContainer Name="DBFinalExamModelStoreContainer">
     <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />

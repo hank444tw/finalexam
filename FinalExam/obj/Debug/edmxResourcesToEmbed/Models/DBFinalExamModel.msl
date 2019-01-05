@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Member">
       <EntityTypeMapping TypeName="DBFinalExamModel.Member">
         <MappingFragment StoreEntitySet="Member">
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Mem_id" ColumnName="Mem_id" />
           <ScalarProperty Name="Mem_password" ColumnName="Mem_password" />
