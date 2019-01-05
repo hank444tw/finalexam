@@ -24,9 +24,18 @@
                     <li>@Html.ActionLink("商品全覽", "AllProduct", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
                     <li>@Html.ActionLink("經營理念", "Introduction", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
                     <li>@Html.ActionLink("地圖資訊", "Map", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
-                    <li>@Html.ActionLink("聯絡我們", "Contact", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                     <li>@Html.ActionLink("購物車", "ShoppingCart", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
-                    <li>@Html.ActionLink("會員中心", "MemberCenter", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li class="dropdown">
+                        <span class="dropdown-toggle" data-toggle="dropdown"><a class="navbar-brand" href="#">會員中心</a></span>
+                        
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("訂單管理", "MemberCenter", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li>@Html.ActionLink("修改資料", "SignChange", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li>@Html.ActionLink("客戶服務", "Service", new { area = "" }, new { @class = "navbar-brand" })</li>
+                        </ul>
+                    </li>
                     <li class="navbar-brand">@Session["Welcome"]</li>
                     <li>@Html.ActionLink("登出", "Signout", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
                 </ul>
