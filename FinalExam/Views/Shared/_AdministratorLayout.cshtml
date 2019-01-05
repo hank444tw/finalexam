@@ -10,6 +10,7 @@
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top">
+        <!--響應是功能列-->
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -19,54 +20,23 @@
                 </button>
                 @Html.ActionLink("想想食室", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("商品管理", "ProductManage", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("商品全覽", "AllProduct", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("經營理念", "Introduction", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("地圖資訊", "Map", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("聯絡我們", "Contact", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li class="navbar-brand">@Session["Welcome"]</li>
+                    <li>@Html.ActionLink("訂單管理", "OrderManage", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("會員名單", "MemberManage", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("商品管理", "ProductManage", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("登出", "Signout", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                </ul>
             </div>
-
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("訂單管理", "OrderManage", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("會員名單", "OrderManage", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-
-            <!--管理員歡迎詞-->
-            <div class="navbar-header">
-                <a href="#" class="navbar-brand">@Session["Welcome"]</a>
-            </div>
-
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("登出", "Signout", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav"></ul>
             </div>
         </div>
-
-
     </div>
 
     <div class="container body-content">

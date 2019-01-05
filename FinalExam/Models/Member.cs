@@ -11,12 +11,24 @@ namespace FinalExam.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Member
     {
         public int Id { get; set; }
+        [DisplayName("帳號")]
+        [Required(ErrorMessage ="帳號不可空白")]
         public string Mem_id { get; set; }
+        [DisplayName("密碼")]
+        [Required(ErrorMessage = "密碼不可空白")]
         public string Mem_password { get; set; }
+        [DisplayName("名稱")]
+        [Required(ErrorMessage = "名稱不可空白")]
         public string Name { get; set; }
+        [DisplayName("電話")]
+        [Required(ErrorMessage = "電話不可空白")]
+        [StringLength(10,ErrorMessage ="電話號碼為10位",MinimumLength =10)]
+        public string Phone { get; set; }
     }
 }
