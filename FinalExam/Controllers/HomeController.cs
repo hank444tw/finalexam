@@ -9,7 +9,7 @@ namespace FinalExam.Controllers
 { 
     public class HomeController : Controller
     {
-    DBFinalExamEntities1 db = new DBFinalExamEntities1();
+    DBFinalExamEntities db = new DBFinalExamEntities();
         public ActionResult Index()
         {
             return View();
