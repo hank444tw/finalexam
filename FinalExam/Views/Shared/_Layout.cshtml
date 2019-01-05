@@ -9,7 +9,7 @@
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top"><!--響應是功能列-->
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -19,62 +19,19 @@
                 </button>
                 @Html.ActionLink("想想食室", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-
-            <div class="navbar-header">
-                @Html.ActionLink("商品全覽", "AllProduct", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("商品全覽", "AllProduct", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("經營理念", "Introduction", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("地圖資訊", "Map", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("聯絡我們", "Contact", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("登入", "Signin", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+</ul>
             </div>
-
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("經營理念", "Introduction", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("地圖資訊", "Map", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("聯絡我們", "Contact", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("登入", "Signin", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("註冊", "Signup", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav"></ul>
             </div>
         </div>
-
-
     </div>
 
     <div class="container body-content">
