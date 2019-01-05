@@ -25,7 +25,7 @@ namespace FinalExam.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Member> Member { get; set; }
         public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<Member> Member { get; set; }
     }
 }

@@ -16,8 +16,9 @@ namespace FinalExam.Models
     {
         public int Id { get; set; }
         public string Mem_id { get; set; }
-        public string Mem_password { get; set; }
         public string Name { get; set; }
+        public string Mem_password { get; set; }
+        public string Mem_RePassword { get; set; }
         public string Phone { get; set; }
     }
 }
