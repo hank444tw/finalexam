@@ -4,21 +4,42 @@
     ViewBag.Title = "MemberCenter";
 }
 
+<div id="w">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>現在會員資料</h2>
+            </div>
+        </div>
+    </div>
+    <!-- /container -->
+</div>
 
-<h2>修改會員資料</h2>
-<!--正在弄顯示-->
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     <table class="table">
         <tr>
-            <th>姓名</th><th>帳號</th><th>密碼</th><th>電話號碼</th>
+            <th>姓名</th>
+            <th>帳號</th>
+            <th>密碼</th>
+            <th>電話號碼</th>
         </tr>
-            @Html.Raw(ViewData["MemberData"])
+        @Html.Raw(ViewData["MemberData"])
     </table>
- 
-    
+
+    <div id="w">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>修改我的資料</h2>
+                </div>
+            </div>
+        </div>
+        <!-- /container -->
+    </div>
+
     <div class="form-horizontal">
 
         <hr />
@@ -26,8 +47,8 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
-            <label class="control-label col-md-2">名稱</label>
-            <div class="col-md-10">
+            <label class="control-label col-md-5">名稱</label>
+            <div class="col-md-7">
 
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" }) <!--Model驗證用，目前沒屁用-->
@@ -35,31 +56,23 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2">帳號</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Mem_id, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Mem_id, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">密碼</label>
-            <div class="col-md-10">
+            <label class="control-label col-md-5">密碼</label>
+            <div class="col-md-7">
                 @Html.EditorFor(model => model.Mem_password, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Mem_password, "", new { @class = "text-danger" }) <!--Model驗證用，目前沒屁用-->
             </div>
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2">電話號碼</label>
-            <div class="col-md-10">
+            <label class="control-label col-md-5">電話號碼</label>
+            <div class="col-md-7">
                 @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" }) <!--Model驗證用，目前沒屁用-->
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-offset-5 col-md-7">
                 <input type="submit" value="修改" class="btn btn-default" />
                 <a class="btn btn-default" href="/Home/Index">取消</a>
             </div>

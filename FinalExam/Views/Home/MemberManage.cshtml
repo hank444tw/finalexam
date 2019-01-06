@@ -1,23 +1,45 @@
-﻿@model FinalExam.Models.Member
+﻿
+@model FinalExam.Models.Member
 
 @{
-    ViewBag.Title = "新增會員";
+    ViewBag.Title = "MemberCenter";
 }
+
 <div id="w">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2" >
-                <h2>註冊新的會員</h2>
-                <h3>加入我們來享有預訂功能</h3>
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>現在會員資料</h2>
             </div>
         </div>
     </div>
     <!-- /container -->
 </div>
 
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    <table class="table">
+        <tr>
+            <th>姓名</th>
+            <th>帳號</th>
+            <th>密碼</th>
+            <th>電話號碼</th>
+        </tr>
+        @Html.Raw(ViewData["MemberData"])
+    </table>
+
+    <div id="w">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>修改我的資料</h2>
+                </div>
+            </div>
+        </div>
+        <!-- /container -->
+    </div>
 
     <div class="form-horizontal">
 
@@ -31,14 +53,6 @@
 
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" }) <!--Model驗證用，目前沒屁用-->
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-5">帳號</label>
-            <div class="col-md-7">
-                @Html.EditorFor(model => model.Mem_id, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Mem_id, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -57,28 +71,15 @@
                 @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" }) <!--Model驗證用，目前沒屁用-->
             </div>
         </div>
-        <div class="form-group">
-            <!--Post後端用按鈕-->
-            <div class="col-md-offset-5 col-md-7">
-                <input type="submit" value="註冊" class="btn btn-default" />
-                <a href="~/Views/Home/Index.cshtml" class="btn btn-default">取消</a>
-            </div>            
-                
- 
-        </div>
-        @{
-            if (ViewBag.Message == "sameacc")
-            {
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <div class='alert alert-danger'>
-                            <strong>錯誤!    </strong>已經有人跟您心靈相通，使用一樣的帳號了。
-                        </div>
-                    </div>
-                </div>
 
-            }
-        }
+        <div class="form-group">
+            <div class="col-md-offset-5 col-md-7">
+                <input type="submit" value="修改" class="btn btn-default" />
+                <a class="btn btn-default" href="/Home/Index">取消</a>
+            </div>
+        </div>
+
+
     </div>
 }
 
