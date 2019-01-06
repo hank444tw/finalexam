@@ -4,13 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - 想想食室</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/custombar.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
-    <div class="navbar navbar-default navbar-fixed-top"><!--響應是功能列-->
-        <div class="container">
+    <div class="navbar navbar-default navbar-custom navbar-fixed-top"><!--響應是功能列-->
+        <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -21,13 +23,27 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("商品全覽", "AllProduct", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
-                    <li>@Html.ActionLink("經營理念", "Introduction", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
-                    <li>@Html.ActionLink("地圖資訊", "Map", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
-                    <li>@Html.ActionLink("聯絡我們", "Contact", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
-                    <li>@Html.ActionLink("購物車", "ShoppingCart", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
-                    <li>@Html.ActionLink("會員中心", "MemberCenter", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("瀏覽商品", "AllProduct", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+
+                    <li class="dropdown">
+                        <a class="navbar-brand" data-toggle="dropdown" href="#">關於我們<span class="caret"></span> </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("地圖資訊", "Introduction", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li>@Html.ActionLink("找到我們", "Map", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li>@Html.ActionLink("聯絡我們", "Contact", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                        </ul>
+                    </li>
+                 </ul>
+                <ul class="nav navbar-nav navbar-right">
                     <li class="navbar-brand">@Session["Welcome"]</li>
+                    <li class="dropdown">
+                        <a class="navbar-brand" data-toggle="dropdown" href="#">會員功能<span class="caret"></span> </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("購物車", "ShoppingCart", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li>@Html.ActionLink("會員資料管理", "MemberCenter", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                        </ul>
+                    </li>
+                    
                     <li>@Html.ActionLink("登出", "Signout", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
                 </ul>
             </div>

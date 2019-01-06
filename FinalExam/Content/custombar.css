@@ -1,0 +1,59 @@
+﻿
+.navbar-custom {
+    background-color: #3366ff;
+    color: #ffffff;
+    border-radius: 0;
+}
+
+.navbar-custom .navbar-nav > li > a {
+    color: #ffffff;
+}
+
+.navbar-custom .navbar-nav > .active > a {
+    color: #ffffff;
+    background-color: transparent;
+}
+
+    .navbar-custom .navbar-nav > li > a:hover,
+    .navbar-custom .navbar-nav > li > a:focus,
+    .navbar-custom .navbar-nav > .active > a:hover,
+    .navbar-custom .navbar-nav > .active > a:focus,
+    .navbar-custom .navbar-nav > .open > a {
+        text-decoration: none;
+        background-color: #3366ff;
+    }
+
+.navbar-custom .navbar-brand {
+    color: #eeeeee;
+}
+
+.navbar-custom .navbar-toggle {
+    background-color: #eeeeee;
+}
+
+.navbar-custom .icon-bar {
+    background-color: #4CAF50;
+}
+.dropdown-content {
+    background-color: #644dbc;
+}
+
+.dropdown-menu {
+    background-color: #644dbc;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+
+}
+
+/* Change color of dropdown links on hover */
+    .dropdown-content a:hover {
+        background-color: #9966ff
+    }
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #3366ff;
+}

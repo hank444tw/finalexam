@@ -11,6 +11,7 @@ namespace FinalExam.Controllers
     public class HomeController : Controller
     {
     DBFinalExamEntities db = new DBFinalExamEntities();
+        string memacc = "";
         public ActionResult Index()
         {
             return View();
@@ -27,6 +28,9 @@ namespace FinalExam.Controllers
 
         public ActionResult MemberCenter()
         {
+           /* var result = from m in db.Member
+                         where m.Mem_id.Contains(memacc)
+                         select m;*/
             return View();
         }
 
@@ -90,7 +94,8 @@ namespace FinalExam.Controllers
                 ViewBag.Message = "帳號或密碼錯誤";
                 return View();
             }
-
+            ViewData["Memacc"] = Mem_id;
+            memacc = Mem_id;
             Session["Welcome"] = member.Name + " 你好!"; //姓名歡迎詞
             if(member.Id == 1)  //判斷是否為管理員
             {
@@ -113,13 +118,12 @@ namespace FinalExam.Controllers
                 {
                     db.Member.Add(mer);
                     db.SaveChanges();
-                    ViewBag.Message = "註冊成功 ! 請重新登入";
                     return RedirectToAction("Signin");
                 }
                 else
                 {
-                    ViewBag.Message="已經有重複的帳號";
-                    
+                   
+                    ViewData["Message"]= "sameacc";
                 }
             }
             return View(mer);
