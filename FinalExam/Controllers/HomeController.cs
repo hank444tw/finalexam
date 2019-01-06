@@ -30,7 +30,7 @@ namespace FinalExam.Controllers
         {
            /* var result = from m in db.Member
                          where m.Mem_id.Contains(memacc)
-                         select m;*/
+                         select m;  >>>這方法失敗  */
             return View();
         }
 
