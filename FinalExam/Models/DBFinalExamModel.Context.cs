@@ -29,5 +29,6 @@ namespace FinalExam.Models
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<ProductImage> ProductImage { get; set; }
+        public virtual DbSet<BigOrder> BigOrder { get; set; }
     }
 }

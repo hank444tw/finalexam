@@ -47,5 +47,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="BigOrder">
+      <EntityTypeMapping TypeName="DBFinalExamModel.BigOrder">
+        <MappingFragment StoreEntitySet="BigOrder">
+          <ScalarProperty Name="MamberName" ColumnName="MamberName" />
+          <ScalarProperty Name="BuyDate" ColumnName="BuyDate" />
+          <ScalarProperty Name="Money" ColumnName="Money" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="OId" ColumnName="OId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -140,6 +140,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BigOrder.cs">
+      <DependentUpon>DBFinalExamModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DBFinalExamModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -161,6 +164,7 @@
     <Compile Include="Models\Order.cs">
       <DependentUpon>DBFinalExamModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderProduct.cs" />
     <Compile Include="Models\Product.cs">
       <DependentUpon>DBFinalExamModel.tt</DependentUpon>
     </Compile>
@@ -194,6 +198,10 @@
     <Content Include="Views\Home\ProductPage.cshtml" />
     <Content Include="Views\Home\ProductManage.cshtml" />
     <Content Include="Views\Home\EditProduct.cshtml" />
+    <Content Include="Views\Home\ShoppingCart.cshtml" />
+    <Content Include="Views\Home\MyOrder.cshtml" />
+    <Content Include="Views\Home\SeeBuyOrder.cshtml" />
+    <Content Include="Views\Home\OrderManage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

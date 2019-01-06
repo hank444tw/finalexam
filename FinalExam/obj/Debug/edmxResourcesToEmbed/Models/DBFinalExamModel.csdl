@@ -5,6 +5,7 @@
     <EntitySet Name="Order" EntityType="DBFinalExamModel.Order" />
     <EntitySet Name="Product" EntityType="DBFinalExamModel.Product" />
     <EntitySet Name="ProductImage" EntityType="DBFinalExamModel.ProductImage" />
+    <EntitySet Name="BigOrder" EntityType="DBFinalExamModel.BigOrder" />
   </EntityContainer>
   <EntityType Name="Member">
     <Key>
@@ -26,7 +27,7 @@
     <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ProductMoney" Type="Int32" />
     <Property Name="Amount" Type="Int32" />
-    <Property Name="CheckSell" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="CheckSell" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -47,5 +48,16 @@
     <Property Name="PId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="BigOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MemberId" Type="Int32" />
+    <Property Name="Money" Type="Int32" />
+    <Property Name="BuyDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MamberName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

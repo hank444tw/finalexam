@@ -12,11 +12,10 @@ namespace FinalExam.Controllers
     public class HomeController : Controller
     {
     DBFinalExamEntities db = new DBFinalExamEntities();
-<<<<<<< .merge_file_a17228
+
     public int pagesize = 6; //要顯示的資料數量
         string memacc = "";
-=======
->>>>>>> .merge_file_a14496
+
         public ActionResult Index()
         {
             return View();
@@ -75,6 +74,64 @@ namespace FinalExam.Controllers
             return View();
         }
 
+        public ActionResult ShoppingCart()
+        {
+            //只顯示那個會員所加入購物車的商品
+            int id = (int)Session["MemberId"];
+            var todo = db.Order.Where(m => m.MemberId == id && m.CheckSell == "Not").ToList();
+            return View(todo);
+        }
+
+        [HttpPost]
+        public ActionResult ShoppingCart(int TotalMoney)
+        {
+            BigOrder bigorder = new BigOrder();
+            int id = (int)Session["MemberId"];
+            var member = db.Member.Where(m => m.Id == id).FirstOrDefault();
+            var todo = db.Order.Where(m => m.MemberId == id && m.CheckSell == "Not").ToList();
+            string OId = GetRandomStringByGuid();
+            foreach (var item in todo)
+            {
+                item.CheckSell = OId;
+            }
+            bigorder.OId = OId;
+            bigorder.MemberId = id;
+            bigorder.Money = TotalMoney;
+            bigorder.BuyDate = DateTime.Now.ToString();
+            bigorder.MamberName = member.Name;
+            db.BigOrder.Add(bigorder);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult MyOrder()
+        {
+            int id = (int)Session["MemberId"];
+            var todo = db.BigOrder.Where(m => m.MemberId == id).ToList();
+            return View(todo);
+        }
+
+        public ActionResult SeeBuyOrder(string id)
+        {
+            var todo = db.Order.Where(m => m.CheckSell == id).ToList();
+
+            return View(todo);
+        }
+
+        public ActionResult OrderManage()
+        {
+            var todo = db.BigOrder.ToList();
+            return View(todo);
+        }
+
+        public ActionResult DeleteShoppingOrder(int id)
+        {
+            var todo = db.Order.Where(m => m.Id == id).FirstOrDefault();
+            db.Order.Remove(todo);
+            db.SaveChanges();
+            return RedirectToAction("ShoppingCart");
+        }
+
         public ActionResult ProductManage()
         {
             var todo = db.Product.ToList();
@@ -104,8 +161,6 @@ namespace FinalExam.Controllers
             db.SaveChanges();
             return View("MemberCenter");
         }
-
-
 
         [HttpPost]
         public ActionResult CreateProduct(Product product, IEnumerable<HttpPostedFileBase> fileList)
@@ -152,6 +207,7 @@ namespace FinalExam.Controllers
 
         public ActionResult EditProduct(string id)
         {
+            Session["EditProductId"] = id;
             TwoModelProduct todo = new TwoModelProduct();
             todo.Product = db.Product.Where(m => m.PId == id).FirstOrDefault();
             todo.ProductImage = db.ProductImage.Where(m => m.PId == id).ToList();
@@ -159,10 +215,82 @@ namespace FinalExam.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditProduct()
+        public ActionResult EditProduct(string PId,string ProductName,int ProductMoney, string ProductIntrodution, IEnumerable<HttpPostedFileBase> fileList)
         {
+            var product = db.Product.Where(m => m.PId == PId).FirstOrDefault();
+            var productimage = db.ProductImage.Where(m => m.PId == PId).ToArray();
+            int ImageAmount = db.ProductImage.Where(m => m.PId == PId).Count(); //取得先前上傳圖片數量
+            int GG = 0;
+            int count = 0;
+            ProductImage productimageNew = new ProductImage();
+            foreach (var item in fileList)
+            {
+                if (item == null || item.ContentLength == 0) //判斷檔案是否為空的
+                {
+                    count++;
+                    continue;
+                }
+                if(count <= ImageAmount-1)
+                {
+                    var FolderPath = Server.MapPath("~/Image/" + PId); //圖片資料夾實體位置
+                    var path = Path.Combine(FolderPath, productimage[count].ImageName + " .png"); //圖片檔案位置
+                    System.IO.File.Delete(path); //刪除圖片檔案
+
+                    string fileName = GetRandomStringByGuid(); //跳到取亂碼的GetRandomStringByGuid方法
+                    item.SaveAs(Path.Combine(FolderPath, fileName + " .png"));
+
+                    productimage[count].ProductName = ProductName;
+                    productimage[count].ImageName = fileName;
+                    if(count == 0)
+                    {
+                        product.OneImageName = fileName;
+                    }
+                    db.SaveChanges();
+                    count++;
+                }
+                else
+                {
+                    var FolderPath = Server.MapPath("~/Image/" + PId); //圖片資料夾實體位置
+                    string fileName = GetRandomStringByGuid(); //跳到取亂碼的GetRandomStringByGuid方法
+                    item.SaveAs(Path.Combine(FolderPath, fileName + " .png"));
+                    productimageNew.PId = PId;
+                    productimageNew.ProductName = ProductName;
+                    productimageNew.ImageName = fileName;
+                    db.ProductImage.Add(productimageNew);
+                    db.SaveChanges();
+                }
+            }
+            product.ProductName = ProductName;
+            product.ProductMoney = ProductMoney;
+            product.ProductIntrodution = ProductIntrodution;
+            db.SaveChanges();
+            return RedirectToAction("ProductManage");
+        }
+
+        public ActionResult DeleteImage(string ImageName)
+        {
+            var todo = db.ProductImage.Where(m => m.ImageName == ImageName).FirstOrDefault();
+            db.ProductImage.Remove(todo);
+            db.SaveChanges();
+            return RedirectToAction("EditProduct","Home",new {id = (string)Session["EditProductId"]});
+        }
+
+        public ActionResult DeleteProduct(string id)
+        {
+            var todo = db.Product.Where(m => m.PId == id).FirstOrDefault();
+            var todo2 = db.ProductImage.Where(m => m.PId == id).ToList();
+
+            var FolderPath = Server.MapPath("~/Image/" + id); //圖片資料夾實體位置
+            System.IO.Directory.Delete(FolderPath, true); //加了true,資料夾連同裡面圖片刪光光，爽!!
+
+            db.Product.Remove(todo);
+            foreach(var item in todo2)
+            {
+                db.ProductImage.Remove(item);
+            }
+            db.SaveChanges();
             
-            return RedirectToAction("Index");
+            return RedirectToAction("ProductManage");
         }
 
         public static string GetRandomStringByGuid()  //使用Guid產生亂碼

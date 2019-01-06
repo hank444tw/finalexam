@@ -1,0 +1,70 @@
+﻿@model IEnumerable<FinalExam.Models.Order>
+
+@{
+    ViewBag.Title = "購物車";
+}
+
+<h4> 購物車</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            產品名稱
+        </th>
+        <th>
+            單價
+        </th>
+        <th>
+            數量
+        </th>
+        <th>
+            金額
+        </th>
+        @*<th>
+                確認購買
+            </th>*@
+        <th></th>
+    </tr>
+
+    @{
+        int Money = 0;
+        int TotalMoney = 0;
+    }
+
+    @foreach (var item in Model)
+    {
+        Money = (int)item.ProductMoney * (int)item.Amount;
+        TotalMoney = TotalMoney + Money;
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductMoney)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Money
+            </td>
+            @*<td>
+                    <input type="checkbox" name="CheckSell"/>
+                </td>*@
+            <td>
+                @Html.ActionLink("刪除", "DeleteShoppingOrder", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+
+<h4>總金額: @TotalMoney</h4>
+
+@using (Html.BeginForm("ShoppingCart", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input name="TotalMoney" type="hidden" value=@TotalMoney />
+    <input type="submit" value="結帳" class="btn btn-default" />
+}
+
+
+

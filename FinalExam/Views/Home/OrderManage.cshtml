@@ -1,0 +1,46 @@
+﻿@model IEnumerable<FinalExam.Models.BigOrder>
+
+@{
+    ViewBag.Title = "訂單管理";
+}
+
+<h4> 訂單管理</h4>
+<table class="table">
+    <tr>
+        <th>
+            訂單編號
+        </th>
+        <th>
+            總金額
+        </th>
+        <th>
+            訂購時間
+        </th>
+        <th>
+            訂購會員
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Money)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BuyDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MamberName)
+            </td>
+            <td>
+                @Html.ActionLink("查看", "SeeBuyOrder", new { id = item.OId })
+            </td>
+        </tr>
+    }
+
+</table>

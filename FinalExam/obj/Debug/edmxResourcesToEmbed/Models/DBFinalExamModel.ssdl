@@ -1,5 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DBFinalExamModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BigOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OId" Type="nvarchar" MaxLength="50" />
+    <Property Name="MemberId" Type="int" />
+    <Property Name="Money" Type="int" />
+    <Property Name="BuyDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="MamberName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="Member">
     <Key>
       <PropertyRef Name="Id" />
@@ -20,7 +31,7 @@
     <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
     <Property Name="ProductMoney" Type="int" />
     <Property Name="Amount" Type="int" />
-    <Property Name="CheckSell" Type="nchar" MaxLength="10" />
+    <Property Name="CheckSell" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -43,6 +54,7 @@
     <Property Name="ImageName" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityContainer Name="DBFinalExamModelStoreContainer">
+    <EntitySet Name="BigOrder" EntityType="Self.BigOrder" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />

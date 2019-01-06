@@ -1,0 +1,63 @@
+﻿@model IEnumerable<FinalExam.Models.Order>
+
+@{
+    ViewBag.Title = "訂單明細";
+}
+
+<h4>訂單明細</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            產品名稱
+        </th>
+        <th>
+            單價
+        </th>
+        <th>
+            數量
+        </th>
+        <th>
+            金額
+        </th>
+        <th></th>
+    </tr>
+
+    @{
+        int Money = 0;
+        int TotalMoney = 0;
+    }
+
+    @foreach (var item in Model)
+    {
+        Money = (int)item.ProductMoney * (int)item.Amount;
+        TotalMoney = TotalMoney + Money;
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductMoney)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Money
+            </td>
+            @*<td>
+                    <input type="checkbox" name="CheckSell"/>
+                </td>*@
+        </tr>
+    }
+
+</table>
+<h4>總金額: @TotalMoney</h4>
+@if ((int)Session["MemberId"] != 1)
+{
+    @Html.ActionLink("回我的訂單", "MyOrder")
+}
+else
+{
+    @Html.ActionLink("回訂單管理", "OrderManage")
+}
