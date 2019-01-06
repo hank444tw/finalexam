@@ -12,13 +12,12 @@ namespace FinalExam.Controllers
     public class HomeController : Controller
     {
     DBFinalExamEntities db = new DBFinalExamEntities();
-<<<<<<< HEAD
+
 
     public int pagesize = 6; //要顯示的資料數量
         string memacc = "";
-=======
-    public int pagesize = 6; //要顯示的資料數量
->>>>>>> 75b82126df7ca26ccfb9d173081c997c00e569d6
+
+
 
         public ActionResult Index()
         {
