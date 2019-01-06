@@ -1,0 +1,48 @@
+﻿@model IEnumerable<FinalExam.Models.Product>
+
+@{
+    ViewBag.Title = "商品管理";
+}
+
+<h2>商品管理</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            圖片
+        </th>
+        <th>
+            商品名稱
+        </th>
+        <th>
+            金額
+        </th>
+        <th>
+            介紹
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="~/Image/@Html.DisplayFor(m => item.PId)/@Html.DisplayFor(m => item.OneImageName) .png" style="width:100px;height:75px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductMoney)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductIntrodution)
+            </td>
+            <td>
+                @Html.ActionLink("修改", "EditProduct", new { id = item.PId }) |
+                @Html.ActionLink("刪除", "DeleteProduct", new { id = item.PId })
+            </td>
+        </tr>
+    }
+
+</table>

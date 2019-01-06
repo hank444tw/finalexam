@@ -1,0 +1,63 @@
+﻿@model FinalExam.Models.TwoModelProduct
+
+@using (Html.BeginForm("EditProduct", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>修改商品</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <input id="Product_PId" name="PId" type="hidden" value=@Model.Product.PId />
+
+    <div class="form-group">
+        商品名稱
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Product.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Product.ProductName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        金額
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Product.ProductMoney, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Product.ProductMoney, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        簡短介紹
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Product.ProductIntrodution, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Product.ProductIntrodution, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.OneImageName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.OneImageName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.OneImageName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

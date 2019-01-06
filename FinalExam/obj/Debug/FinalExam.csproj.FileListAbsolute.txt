@@ -158,3 +158,8 @@ C:\Users\Jayce\Documents\finalexam\FinalExam\obj\Debug\FinalExam.csproj.CoreComp
 C:\Users\Jayce\Documents\finalexam\FinalExam\obj\Debug\FinalExam.csproj.CopyComplete
 C:\Users\Jayce\Documents\finalexam\FinalExam\obj\Debug\FinalExam.dll
 C:\Users\Jayce\Documents\finalexam\FinalExam\obj\Debug\FinalExam.pdb
+C:\Users\hank.000\Desktop\ASP_NET_MVC\FinalExam\FinalExam\bin\PagedList.dll
+C:\Users\hank.000\Desktop\ASP_NET_MVC\FinalExam\FinalExam\bin\PagedList.Mvc.dll
+C:\Users\hank.000\Desktop\ASP_NET_MVC\FinalExam\FinalExam\bin\PagedList.xml
+C:\Users\hank.000\Desktop\ASP_NET_MVC\FinalExam\FinalExam\bin\PagedList.Mvc.xml
+C:\Users\hank.000\Desktop\ASP_NET_MVC\FinalExam\FinalExam\bin\zh-Hant\EntityFramework.SqlServer.resources.dll

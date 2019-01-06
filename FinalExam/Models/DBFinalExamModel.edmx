@@ -25,6 +25,7 @@
           <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
           <Property Name="ProductMoney" Type="int" />
           <Property Name="Amount" Type="int" />
+          <Property Name="CheckSell" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -34,13 +35,15 @@
           <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ProductMoney" Type="int" Nullable="false" />
           <Property Name="ProductIntrodution" Type="nvarchar" MaxLength="50" />
+          <Property Name="PId" Type="nvarchar" MaxLength="50" />
+          <Property Name="OneImageName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ProductImage">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PId" Type="int" Nullable="false" />
+          <Property Name="PId" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
           <Property Name="ImageName" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -56,9 +59,9 @@
       <Schema Namespace="DBFinalExamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="DBFinalExamEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Member" EntityType="DBFinalExamModel.Member" />
-          <EntitySet Name="ProductImage" EntityType="DBFinalExamModel.ProductImage" />
           <EntitySet Name="Order" EntityType="DBFinalExamModel.Order" />
           <EntitySet Name="Product" EntityType="DBFinalExamModel.Product" />
+          <EntitySet Name="ProductImage" EntityType="DBFinalExamModel.ProductImage" />
         </EntityContainer>
         <EntityType Name="Member">
           <Key>
@@ -71,15 +74,6 @@
           <Property Name="Mem_RePassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
-        <EntityType Name="ProductImage">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="PId" Type="Int32" Nullable="false" />
-          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="Id" />
@@ -89,6 +83,7 @@
           <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ProductMoney" Type="Int32" />
           <Property Name="Amount" Type="Int32" />
+          <Property Name="CheckSell" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -98,6 +93,17 @@
           <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ProductMoney" Type="Int32" Nullable="false" />
           <Property Name="ProductIntrodution" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OneImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProductImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -117,19 +123,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProductImage">
-            <EntityTypeMapping TypeName="DBFinalExamModel.ProductImage">
-              <MappingFragment StoreEntitySet="ProductImage">
-                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="PId" ColumnName="PId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="DBFinalExamModel.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="CheckSell" ColumnName="CheckSell" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="ProductMoney" ColumnName="ProductMoney" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
@@ -141,9 +138,21 @@
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="DBFinalExamModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="OneImageName" ColumnName="OneImageName" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
                 <ScalarProperty Name="ProductIntrodution" ColumnName="ProductIntrodution" />
                 <ScalarProperty Name="ProductMoney" ColumnName="ProductMoney" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductImage">
+            <EntityTypeMapping TypeName="DBFinalExamModel.ProductImage">
+              <MappingFragment StoreEntitySet="ProductImage">
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

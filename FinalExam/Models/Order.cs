@@ -19,5 +19,6 @@ namespace FinalExam.Models
         public string ProductName { get; set; }
         public Nullable<int> ProductMoney { get; set; }
         public Nullable<int> Amount { get; set; }
+        public string CheckSell { get; set; }
     }
 }

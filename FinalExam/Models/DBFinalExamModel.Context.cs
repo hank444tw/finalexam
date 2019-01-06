@@ -26,8 +26,8 @@ namespace FinalExam.Models
         }
     
         public virtual DbSet<Member> Member { get; set; }
-        public virtual DbSet<ProductImage> ProductImage { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<ProductImage> ProductImage { get; set; }
     }
 }

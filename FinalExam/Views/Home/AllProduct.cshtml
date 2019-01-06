@@ -1,0 +1,49 @@
+﻿@model IPagedList<FinalExam.Models.Product>
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "商品總覽";
+}
+
+<h2>商品總覽</h2>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <img src="~/Image/@Html.DisplayFor(m => item.PId)/@Html.DisplayFor(m => item.OneImageName) .png" style="width:200px;height:150px" />
+                <div class="caption">
+                    <h2>
+                        @Html.DisplayFor(m => item.ProductName)
+                    </h2>
+                    <p>
+                        @Html.DisplayFor(m => item.ProductMoney)
+                    </p>
+                    <p>
+                        @Html.DisplayFor(m => item.ProductIntrodution)
+                    </p>
+                    <a href="/Home/ProductPage?Id=@item.PId" class="btn btn-success">查看</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-5">
+        @Html.PagedListPager(Model,page=>Url.Action("AllProduct",new { page }),
+    new PagedListRenderOptions {
+        LinkToFirstPageFormat = "<<",
+        LinkToPreviousPageFormat = "<",
+        LinkToNextPageFormat = ">",
+        LinkToLastPageFormat = ">>",
+        DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+        DisplayLinkToLastPage = PagedListDisplayMode.Always,
+        DisplayLinkToNextPage = PagedListDisplayMode.Always,
+        DisplayLinkToPreviousPage = PagedListDisplayMode.Always
+    })
+    </div>
+</div>
+

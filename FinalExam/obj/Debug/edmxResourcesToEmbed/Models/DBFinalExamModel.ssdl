@@ -20,6 +20,7 @@
     <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
     <Property Name="ProductMoney" Type="int" />
     <Property Name="Amount" Type="int" />
+    <Property Name="CheckSell" Type="nchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -29,13 +30,15 @@
     <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="ProductMoney" Type="int" Nullable="false" />
     <Property Name="ProductIntrodution" Type="nvarchar" MaxLength="50" />
+    <Property Name="PId" Type="nvarchar" MaxLength="50" />
+    <Property Name="OneImageName" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="ProductImage">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PId" Type="int" Nullable="false" />
+    <Property Name="PId" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
     <Property Name="ImageName" Type="nvarchar" MaxLength="50" />
   </EntityType>

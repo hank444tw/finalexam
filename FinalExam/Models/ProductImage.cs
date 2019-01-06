@@ -15,7 +15,7 @@ namespace FinalExam.Models
     public partial class ProductImage
     {
         public int Id { get; set; }
-        public int PId { get; set; }
+        public string PId { get; set; }
         public string ProductName { get; set; }
         public string ImageName { get; set; }
     }
