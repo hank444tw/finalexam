@@ -11,6 +11,16 @@
     <Property Name="Mem_RePassword" Type="nvarchar" MaxLength="50" />
     <Property Name="Phone" Type="nchar" MaxLength="10" />
   </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MemberId" Type="int" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProductMoney" Type="int" />
+    <Property Name="Amount" Type="int" />
+  </EntityType>
   <EntityType Name="Product">
     <Key>
       <PropertyRef Name="Id" />
@@ -19,11 +29,20 @@
     <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="ProductMoney" Type="int" Nullable="false" />
     <Property Name="ProductIntrodution" Type="nvarchar" MaxLength="50" />
-    <Property Name="PId" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ProductImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PId" Type="int" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
     <Property Name="ImageName" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityContainer Name="DBFinalExamModelStoreContainer">
     <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductImage" EntityType="Self.ProductImage" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

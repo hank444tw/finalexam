@@ -36,22 +36,40 @@ namespace FinalExam.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateProduct(Product product,HttpPostedFileBase file)
+        public ActionResult CreateProduct(Product product, IEnumerable<HttpPostedFileBase> fileList)
         {
-            int fid = db.Product.Max(m => m.Id) + 1 ; //找到當前最大的Id值並+1,見鬼了不用Value
+            int fid = db.Product.Max(m => m.Id) + 1 ; //找到當前最大的ProductId值並+1,見鬼了不用Value
             string pathimage = Server.MapPath("~/Image/" + fid.ToString());
-            System.IO.Directory.CreateDirectory(pathimage); //新增資料夾
+            string path = Server.MapPath("~/Image/");
+            System.IO.Directory.CreateDirectory(pathimage); //新增該產品的圖片資料夾
 
-            if (file == null || file.ContentLength == 0)//判斷檔案是否為空的
+            int GG = 0;
+            foreach (var item in fileList)
             {
-                db.Product.Add(product);
+                ProductImage productimage = new ProductImage();
+                if (item == null || item.ContentLength == 0) //判斷檔案是否為空的
+                {
+                    GG++; //GG為3時代表都沒上傳圖片
+                    if(GG == 3)
+                    {
+                        //放張"此產品尚未有圖片"的圖片進去資料夾
+                        System.IO.File.Copy(Path.Combine(path, "NoImage.png"), Path.Combine(pathimage, "NoImage.png"));
+                        productimage.ImageName = "NoImage.png";
+                        productimage.PId = fid;
+                        productimage.ProductName = product.ProductName;
+                        db.ProductImage.Add(productimage);
+                        db.SaveChanges();
+                    }
+                    continue;
+                }
+                string fileName = GetRandomStringByGuid(); //跳到取亂碼的GetRandomStringByGuid方法
+                item.SaveAs(Path.Combine(pathimage, fileName + " .png"));
+                productimage.PId = fid;  //圖片存進ProductImage資料表,PId為產品的Id
+                productimage.ProductName = product.ProductName;
+                productimage.ImageName = fileName;
+                db.ProductImage.Add(productimage);
                 db.SaveChanges();
-                return RedirectToAction("Index");
-            } 
-
-            string fileName = GetRandomStringByGuid(); //跳到取亂碼的GetRandomStringByGuid方法
-            file.SaveAs(Path.Combine(pathimage, fileName + " .png"));
-            product.ImageName = fileName;
+            }
             db.Product.Add(product);
             db.SaveChanges();
             return RedirectToAction("Index");

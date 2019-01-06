@@ -15,15 +15,16 @@ namespace FinalExam.Models
     
     public partial class Product
     {
+        
         public int Id { get; set; }
 
         [DisplayName("產品名稱")]
         public string ProductName { get; set; }
+
         [DisplayName("金額")]
         public int ProductMoney { get; set; }
-        [DisplayName("介紹")]
+
+        [DisplayName("簡短介紹")]
         public string ProductIntrodution { get; set; }
-        public string PId { get; set; }
-        public string ImageName { get; set; }
     }
 }
