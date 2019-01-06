@@ -11,17 +11,11 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
     <table class="table">
         <tr>
             <th>姓名</th><th>帳號</th><th>密碼</th><th>電話號碼</th>
         </tr>
-        <tr>
-            @{
-
-                <th></th>
-            }
-        </tr>
+            @Html.Raw(ViewData["MemberData"])
     </table>
  
     
