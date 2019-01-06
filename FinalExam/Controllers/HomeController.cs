@@ -11,7 +11,6 @@ namespace FinalExam.Controllers
     public class HomeController : Controller
     {
     DBFinalExamEntities db = new DBFinalExamEntities();
-        string memacc = "";
         public ActionResult Index()
         {
             return View();
@@ -28,9 +27,19 @@ namespace FinalExam.Controllers
 
         public ActionResult MemberCenter()
         {
-           /* var result = from m in db.Member
-                         where m.Mem_id.Contains(memacc)
-                         select m;  >>>這方法失敗  */
+            string memacc = Session["memacc"].ToString() ;
+            var result = db.Member.Where(m => m.Mem_id.Contains(memacc));
+            string show = "";
+            foreach(var m  in result)
+            {
+                show += "<tr>";
+                show += "<th>" + m.Name + "</th>";
+                show += "<th>" + m.Mem_id + "</th>";
+                show += "<th>" + "************"+ "</th>";
+                show += "<th>" + m.Phone + "</th>";
+                show += "</tr>";
+            }
+            ViewData["MemberData"] = show;
             return View();
         }
 
@@ -38,6 +47,19 @@ namespace FinalExam.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult MemberCenter(Member mr)
+        {
+            string memacc = Session["memacc"].ToString();
+            var result = db.Member.Where(m => m.Mem_id == memacc).FirstOrDefault();
+            result.Name = mr.Name;
+            result.Mem_password = mr.Mem_password;
+            result.Phone = mr.Phone;
+            db.SaveChanges();
+            return View("MemberCenter");
+        }
+
+
 
         [HttpPost]
         public ActionResult CreateProduct(Product product, IEnumerable<HttpPostedFileBase> fileList)
@@ -94,8 +116,7 @@ namespace FinalExam.Controllers
                 ViewBag.Message = "帳號或密碼錯誤";
                 return View();
             }
-            ViewData["Memacc"] = Mem_id;
-            memacc = Mem_id;
+            Session["memacc"]= member.Mem_id;
             Session["Welcome"] = member.Name + " 你好!"; //姓名歡迎詞
             if(member.Id == 1)  //判斷是否為管理員
             {
