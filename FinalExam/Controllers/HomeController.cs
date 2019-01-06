@@ -12,16 +12,42 @@ namespace FinalExam.Controllers
     public class HomeController : Controller
     {
     DBFinalExamEntities db = new DBFinalExamEntities();
-<<<<<<< .merge_file_a17228
     public int pagesize = 6; //要顯示的資料數量
-        string memacc = "";
-=======
->>>>>>> .merge_file_a14496
+
         public ActionResult Index()
         {
+            ViewBag.Title = "首頁";
             return View();
         }
-
+        public ActionResult MemberManage()
+        {
+            string memacc = Session["memacc"].ToString();
+            var result = db.Member;
+            string show = "";
+            foreach (var m in result)
+            {
+                show += "<tr>";
+                show += "<th>" + m.Name + "</th>";
+                show += "<th>" + m.Mem_id + "</th>";
+                show += "<th>" + "************" + "</th>";
+                show += "<th>" + m.Phone + "</th>";
+                show += "</tr>";
+            }
+            ViewData["MemberData"] = show;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult MemberManage(Member mr)
+        {
+            string memacc = Session["memacc"].ToString();
+            var result = db.Member.Where(m => m.Mem_id == memacc).FirstOrDefault();
+            result.Name = mr.Name;
+            result.Mem_password = mr.Mem_password;
+            result.Phone = mr.Phone;
+            db.SaveChanges();
+            Session["memacc"] = "";
+            return RedirectToAction("Signin");
+        }
         public ActionResult Signin()
         {
             return View();
@@ -102,7 +128,8 @@ namespace FinalExam.Controllers
             result.Mem_password = mr.Mem_password;
             result.Phone = mr.Phone;
             db.SaveChanges();
-            return View("MemberCenter");
+            Session["memacc"] = "";
+            return RedirectToAction("Signin");
         }
 
 

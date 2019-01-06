@@ -3,62 +3,47 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - 想想食室</title>
+    <title>@ViewBag.Title -想想食室</title>
+    <!--粉底、眼線還有假睫毛-->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet" type="text/css">
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <link href="~/Content/custombar.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/style.css" rel="stylesheet">
 </head>
-<body>
-    <div class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <!--響應式功能列-->
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("想想食室", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("瀏覽商品", "AllProduct", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
 
-                    <li class="dropdown">
-                        <a class="navbar-brand" data-toggle="dropdown" href="#">關於我們<span class="caret"></span> </a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("地圖資訊", "Introduction", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
-                            <li>@Html.ActionLink("找到我們", "Map", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
-                            <li>@Html.ActionLink("聯絡我們", "Contact", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("註冊", "Signup", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
-                    <li>@Html.ActionLink("登入", "Signin", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
-                </ul>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav"></ul>
-            </div>
+<body>
+    <!--響應式功能列-->
+    <div class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("想想食室", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                <li>@Html.ActionLink("瀏覽商品", "AllProduct", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>@Html.ActionLink("註冊", "Signup", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                <li>@Html.ActionLink("登入", "Signin", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+            </ul>
         </div>
     </div>
-
-    <div class="container body-content">
+    <!--在衣服裡面的部分-->
+    <div class="container-fluid body-content">
         @RenderBody()
-        <hr />
+    </div>
+    <!--紅色高跟鞋-->
         <footer>
-            <div class="row">
-                <div class="col-md-4 col-md-offset-5">
+            <div id="copyrights">
+                <div class="container">
                     <p>&copy; 今天日期: @DateTime.Now.Year - @DateTime.Now.Month - @DateTime.Now.Day</p>
                     <p>&copy; 雲端架構與應用期末作業</p>
                 </div>
             </div>
         </footer>
-    </div>
+        <!--玻尿酸-->
+        <script src="~/Scripts/main.js"></script>
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>

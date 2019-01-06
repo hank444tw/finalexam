@@ -1,6 +1,7 @@
 ﻿
 .navbar-custom {
-    background-color: #3366ff;
+    font-family: 'Noto Sans TC', sans-serif;
+    background-color:green;
     color: #ffffff;
     border-radius: 0;
 }
@@ -9,10 +10,10 @@
     color: #ffffff;
 }
 
-.navbar-custom .navbar-nav > .active > a {
-    color: #ffffff;
-    background-color: transparent;
-}
+    .navbar-custom .navbar-nav > .active > a {
+        color: #ffffff;
+        background-color: #b6ff00;
+    }
 
     .navbar-custom .navbar-nav > li > a:hover,
     .navbar-custom .navbar-nav > li > a:focus,
@@ -20,7 +21,7 @@
     .navbar-custom .navbar-nav > .active > a:focus,
     .navbar-custom .navbar-nav > .open > a {
         text-decoration: none;
-        background-color: #3366ff;
+        background-color: #b6ff00;
     }
 
 .navbar-custom .navbar-brand {
@@ -31,15 +32,15 @@
     background-color: #eeeeee;
 }
 
-.navbar-custom .icon-bar {
-    background-color: #4CAF50;
-}
+    .navbar-custom .icon-bar {
+        background-color: #b6ff00;
+    }
 .dropdown-content {
-    background-color: #644dbc;
+    background-color:  #b6ff00;
 }
 
 .dropdown-menu {
-    background-color: #644dbb;
+    background-color: #b6ff00;
 }
 
 /* Links inside the dropdown */
@@ -50,10 +51,10 @@
 
 /* Change color of dropdown links on hover */
     .dropdown-content a:hover {
-        background-color: #9966ff
+        background-color: green;
     }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-    background-color: #3366ff;
+    background-color: green;
 }
