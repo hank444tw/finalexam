@@ -5,11 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="c36f081fe8844ba7a11235ed94bfc4be" Name="Diagram1">
-        <EntityTypeShape EntityType="DBFinalExamModel.Member" Width="1.5" PointX="1.375" PointY="1.125" />
         <EntityTypeShape EntityType="DBFinalExamModel.Order" Width="1.5" PointX="6.875" PointY="1.125" />
         <EntityTypeShape EntityType="DBFinalExamModel.Product" Width="1.5" PointX="3.125" PointY="1.375" />
         <EntityTypeShape EntityType="DBFinalExamModel.ProductImage" Width="1.5" PointX="5" PointY="1.25" />
         <EntityTypeShape EntityType="DBFinalExamModel.BigOrder" Width="1.5" PointX="8.625" PointY="1.125" />
+        <EntityTypeShape EntityType="DBFinalExamModel.Member" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

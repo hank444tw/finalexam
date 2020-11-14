@@ -3,117 +3,127 @@
 @using (Html.BeginForm("CreateProduct", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-
-<div class="form-horizontal">
-    <h4>新增產品</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        <label class="control-label col-md-2">產品名稱</label>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-md-2">金額</label>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ProductMoney, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ProductMoney, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-md-2">簡短介紹</label>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ProductIntrodution, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ProductIntrodution, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">
-            <div class="thumbnail">
-                <input type="file" name="fileList" id="imgInp1" />
-                <img src="" style="width:200px;height:150px" id="blah1" class="hidden" />
+        <div id="w">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>新增產品</h2>
             </div>
         </div>
+    </div>
+    <!-- 造型真醜 -->
+</div>
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-5">產品名稱</label>
+                <div class="col-md-7">
+                    @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-        <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")" type="text/javascript"></script>
-        <script type="text/javascript">
-            $(function () {
-                $("#imgInp1").change(function () {
-                    if (this.files && this.files[0]) {
-                        var reader = new FileReader();
-                        reader.onload = function (e) {
-                            $('#blah1').attr('src', e.target.result);
-                            $('#blah1').attr('class', "show");
-                            //$('#blah').show(); //圖片顯示
+            <div class="form-group">
+                <label class="control-label col-md-5">金額</label>
+                <div class="col-md-7">
+                    @Html.EditorFor(model => model.ProductMoney, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ProductMoney, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-5">簡短介紹</label>
+                <div class="col-md-7">
+                    @Html.EditorFor(model => model.ProductIntrodution, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ProductIntrodution, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-5 col-md-7">
+                    <input type="submit" value="新增產品" class="btn btn-default" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <input type="file" name="fileList" id="imgInp1" />
+                        <img src="" style="width:200px;height:150px" id="blah1" class="hidden" />
+                    </div>
+                </div>
+
+                <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")" type="text/javascript"></script>
+                <script type="text/javascript">
+                    $(function () {
+                        $("#imgInp1").change(function () {
+                            if (this.files && this.files[0]) {
+                                var reader = new FileReader();
+                                reader.onload = function (e) {
+                                    $('#blah1').attr('src', e.target.result);
+                                    $('#blah1').attr('class', "show");
+                                    //$('#blah').show(); //圖片顯示
+                                }
+                                reader.readAsDataURL(this.files[0]);
+                            }
                         }
-                        reader.readAsDataURL(this.files[0]);
-                    }
-                }
-                );
-            });
-        </script>
+                        );
+                    });
+                </script>
 
-        <div class="col-md-4">
-            <div class="thumbnail">
-                <input type="file" name="fileList" id="imgInp2" />
-                <img src="" style="width:200px;height:150px" id="blah2" class="hidden" />
-            </div>
-        </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <input type="file" name="fileList" id="imgInp2" />
+                        <img src="" style="width:200px;height:150px" id="blah2" class="hidden" />
+                    </div>
+                </div>
 
-        <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")" type="text/javascript"></script>
-        <script type="text/javascript">
-            $(function () {
-                $("#imgInp2").change(function () {
-                    if (this.files && this.files[0]) {
-                        var reader = new FileReader();
-                        reader.onload = function (e) {
-                            $('#blah2').attr('src', e.target.result);
-                            $('#blah2').attr('class', "show");
-                            //$('#blah').show(); //圖片顯示
+                <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")" type="text/javascript"></script>
+                <script type="text/javascript">
+                    $(function () {
+                        $("#imgInp2").change(function () {
+                            if (this.files && this.files[0]) {
+                                var reader = new FileReader();
+                                reader.onload = function (e) {
+                                    $('#blah2').attr('src', e.target.result);
+                                    $('#blah2').attr('class', "show");
+                                    //$('#blah').show(); //圖片顯示
+                                }
+                                reader.readAsDataURL(this.files[0]);
+                            }
                         }
-                        reader.readAsDataURL(this.files[0]);
-                    }
-                }
-                );
-            });
-        </script>
+                        );
+                    });
+                </script>
 
-        <div class="col-md-4">
-            <div class="thumbnail">
-                <input type="file" name="fileList" id="imgInp3" />
-                <img src="" style="width:200px;height:150px" id="blah3" class="hidden" />
-            </div>
-        </div>
-        <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")" type="text/javascript"></script>
-        <script type="text/javascript">
-            $(function () {
-                $("#imgInp3").change(function () {
-                    if (this.files && this.files[0]) {
-                        var reader = new FileReader();
-                        reader.onload = function (e) {
-                            $('#blah3').attr('src', e.target.result);
-                            $('#blah3').attr('class', "show");
-                            //$('#blah').show(); //圖片顯示
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <input type="file" name="fileList" id="imgInp3" />
+                        <img src="" style="width:200px;height:150px" id="blah3" class="hidden" />
+                    </div>
+                </div>
+                <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")" type="text/javascript"></script>
+                <script type="text/javascript">
+                    $(function () {
+                        $("#imgInp3").change(function () {
+                            if (this.files && this.files[0]) {
+                                var reader = new FileReader();
+                                reader.onload = function (e) {
+                                    $('#blah3').attr('src', e.target.result);
+                                    $('#blah3').attr('class', "show");
+                                    //$('#blah').show(); //圖片顯示
+                                }
+                                reader.readAsDataURL(this.files[0]);
+                            }
                         }
-                        reader.readAsDataURL(this.files[0]);
-                    }
-                }
-                );
-            });
-        </script>
-    </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="新增產品" class="btn btn-default" />
+                        );
+                    });
+                </script>
             </div>
+
+
         </div>
-    </div>
     }
 
     <div>

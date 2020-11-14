@@ -21,10 +21,9 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Mem_id" Type="nvarchar" MaxLength="50" />
-          <Property Name="Mem_password" Type="nvarchar" MaxLength="50" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" />
-          <Property Name="Mem_RePassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mem_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mem_password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Phone" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Order">
@@ -70,23 +69,12 @@
     <edmx:ConceptualModels>
       <Schema Namespace="DBFinalExamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="DBFinalExamEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Member" EntityType="DBFinalExamModel.Member" />
           <EntitySet Name="Order" EntityType="DBFinalExamModel.Order" />
           <EntitySet Name="Product" EntityType="DBFinalExamModel.Product" />
           <EntitySet Name="ProductImage" EntityType="DBFinalExamModel.ProductImage" />
           <EntitySet Name="BigOrder" EntityType="DBFinalExamModel.BigOrder" />
+          <EntitySet Name="Member" EntityType="DBFinalExamModel.Member" />
         </EntityContainer>
-        <EntityType Name="Member">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Mem_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Mem_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Mem_RePassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-        </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="Id" />
@@ -129,24 +117,22 @@
           <Property Name="BuyDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MamberName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mem_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mem_password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DBFinalExamModelStoreContainer" CdmEntityContainer="DBFinalExamEntities">
-          <EntitySetMapping Name="Member">
-            <EntityTypeMapping TypeName="DBFinalExamModel.Member">
-              <MappingFragment StoreEntitySet="Member">
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Mem_RePassword" ColumnName="Mem_RePassword" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Mem_password" ColumnName="Mem_password" />
-                <ScalarProperty Name="Mem_id" ColumnName="Mem_id" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="DBFinalExamModel.Order">
               <MappingFragment StoreEntitySet="Order">
@@ -189,6 +175,17 @@
                 <ScalarProperty Name="Money" ColumnName="Money" />
                 <ScalarProperty Name="MemberId" ColumnName="MemberId" />
                 <ScalarProperty Name="OId" ColumnName="OId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Member">
+            <EntityTypeMapping TypeName="DBFinalExamModel.Member">
+              <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mem_password" ColumnName="Mem_password" />
+                <ScalarProperty Name="Mem_id" ColumnName="Mem_id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

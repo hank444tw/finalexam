@@ -16,10 +16,9 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Mem_id" Type="nvarchar" MaxLength="50" />
-    <Property Name="Mem_password" Type="nvarchar" MaxLength="50" />
-    <Property Name="Name" Type="nvarchar" MaxLength="50" />
-    <Property Name="Mem_RePassword" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mem_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mem_password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Phone" Type="nchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="Order">

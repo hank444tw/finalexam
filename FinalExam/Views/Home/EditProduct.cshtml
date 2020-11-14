@@ -3,54 +3,66 @@
 @using (Html.BeginForm("EditProduct", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-
-<div class="form-horizontal">
-    <h4>修改商品</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <input id="Product_PId" name="PId" type="hidden" value=@Model.Product.PId />
-
-    <div class="form-group">
-        <label class="control-label col-md-2">商品名稱</label>
-        <div class="col-md-10">
-            <input class="form-control text-box single-line" id="Product_ProductName" name="ProductName" type="text" value="@Model.Product.ProductName" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-md-2">金額</label>
-        <div class="col-md-10">
-            <input class="form-control text-box single-line" data-val="true" data-val-number="欄位 ProductMoney 必須是數字。" data-val-required="ProductMoney 欄位是必要項。" id="Product_ProductMoney" name="ProductMoney" type="number" value=@Model.Product.ProductMoney />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-md-2">簡短介紹</label>
-        <div class="col-md-10">
-            <input class="form-control text-box single-line" id="ProductIntrodution" name="ProductIntrodution" type="text" value="@Model.Product.ProductIntrodution" />
-        </div>
-    </div>
-
-   
-    <div class="row">
-        @{
-            int a = 1;
-        }
-        @foreach (var item in Model.ProductImage)
-        {
-            <div class="col-md-4">
-                <div class="thumbnail">
-                    @if (a != 1)
-                    {
-                        @Html.ActionLink("刪除", "DeleteImage", new { ImageName = item.ImageName }, new { @class = "btn btn-danger" })
-                    }
-                    <input type="file" name="fileList" id="imgInp_@a" />
-                    <img src="~/Image/@Html.DisplayFor(m => item.PId)/@Html.DisplayFor(m => item.ImageName) .png" style="width:200px;height:150px" id="blah_@a" />
-                </div>
+    <div id="w">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>修改商品</h2>
             </div>
+        </div>
+    </div>
+    <!-- 造型真醜 -->
+</div>
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <input id="Product_PId" name="PId" type="hidden" value=@Model.Product.PId />
 
-            <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")" type="text/javascript"></script>
-            <script type="text/javascript">
+        <div class="form-group">
+            <label class="control-label col-md-5">商品名稱</label>
+            <div class="col-md-7">
+                <input class="form-control text-box single-line" id="Product_ProductName" name="ProductName" type="text" value="@Model.Product.ProductName" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-5">金額</label>
+            <div class="col-md-7">
+                <input class="form-control text-box single-line" data-val="true" data-val-number="欄位 ProductMoney 必須是數字。" data-val-required="ProductMoney 欄位是必要項。" id="Product_ProductMoney" name="ProductMoney" type="number" value=@Model.Product.ProductMoney />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-5">簡短介紹</label>
+            <div class="col-md-7">
+                <input class="form-control text-box single-line" id="ProductIntrodution" name="ProductIntrodution" type="text" value="@Model.Product.ProductIntrodution" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-5 col-md-7">
+                <input type="submit" value="儲存" class="btn btn-default" />
+            </div>
+        </div>
+
+        <div class="row">
+            @{
+                int a = 1;
+            }
+            @foreach (var item in Model.ProductImage)
+            {
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        @if (a != 1)
+                        {
+                            @Html.ActionLink("刪除", "DeleteImage", new { ImageName = item.ImageName }, new { @class = "btn btn-danger" })
+                        }
+                        <input type="file" name="fileList" id="imgInp_@a" />
+                        <img src="~/Image/@Html.DisplayFor(m => item.PId)/@Html.DisplayFor(m => item.ImageName) .png" style="width:200px;height:150px" id="blah_@a" />
+                    </div>
+                </div>
+
+                <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")" type="text/javascript"></script>
+                <script type="text/javascript">
             $(function () {
                 $("#imgInp_@a").change(function () {
                     if (this.files && this.files[0]) {
@@ -64,20 +76,20 @@
                 }
                 );
             });
-            </script>
-            a++;
-        }
-        @for (; a <= 3; a++) //就是要三個上傳圖片按鈕，少的就補給他
-        {
-            <div class="col-md-4">
-                <div class="thumbnail">
-                    <input type="file" name="fileList" id="imgInp_@a"/>
-                    <img src="" style="width:200px;height:150px" id="blah_@a" class="hidden"/>
+                </script>
+                a++;
+            }
+            @for (; a <= 3; a++) //就是要三個上傳圖片按鈕，少的就補給他
+            {
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <input type="file" name="fileList" id="imgInp_@a" />
+                        <img src="" style="width:200px;height:150px" id="blah_@a" class="hidden" />
+                    </div>
                 </div>
-            </div>
 
-            <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")" type="text/javascript"></script>
-            <script type="text/javascript">
+                <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")" type="text/javascript"></script>
+                <script type="text/javascript">
             $(function () {
                 $("#imgInp_@a").change(function () {
                     if (this.files && this.files[0]) {
@@ -92,16 +104,12 @@
                 }
                 );
             });
-            </script>
-        }
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="儲存" class="btn btn-default" />
+                </script>
+            }
         </div>
+
+
     </div>
-</div>
 
 }
 

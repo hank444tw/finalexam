@@ -1,18 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DBFinalExamModelStoreContainer" CdmEntityContainer="DBFinalExamEntities">
-    <EntitySetMapping Name="Member">
-      <EntityTypeMapping TypeName="DBFinalExamModel.Member">
-        <MappingFragment StoreEntitySet="Member">
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Mem_RePassword" ColumnName="Mem_RePassword" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Mem_password" ColumnName="Mem_password" />
-          <ScalarProperty Name="Mem_id" ColumnName="Mem_id" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Order">
       <EntityTypeMapping TypeName="DBFinalExamModel.Order">
         <MappingFragment StoreEntitySet="Order">
@@ -55,6 +43,17 @@
           <ScalarProperty Name="Money" ColumnName="Money" />
           <ScalarProperty Name="MemberId" ColumnName="MemberId" />
           <ScalarProperty Name="OId" ColumnName="OId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Member">
+      <EntityTypeMapping TypeName="DBFinalExamModel.Member">
+        <MappingFragment StoreEntitySet="Member">
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Mem_password" ColumnName="Mem_password" />
+          <ScalarProperty Name="Mem_id" ColumnName="Mem_id" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

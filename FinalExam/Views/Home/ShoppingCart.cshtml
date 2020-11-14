@@ -3,8 +3,15 @@
 @{
     ViewBag.Title = "購物車";
 }
-
-<h4> 購物車</h4>
+<div id="w">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>購物車</h2>
+            </div>
+        </div>
+    </div>
+</div>
 
 <table class="table">
     <tr>
@@ -58,13 +65,18 @@
     }
 </table>
 
-<h4>總金額: @TotalMoney</h4>
+<div class="col-md-offset-4 col-md-8">
+    <h4>總金額: @TotalMoney</h4>
 
-@using (Html.BeginForm("ShoppingCart", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    <input name="TotalMoney" type="hidden" value=@TotalMoney />
-    <input type="submit" value="結帳" class="btn btn-default" />
-}
+    @using (Html.BeginForm("ShoppingCart", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <input name="TotalMoney" type="hidden" value=@TotalMoney />
+        <input type="submit" value="結帳" class="btn btn-default" />
+    }
+
+</div>
+
+
 
 
 

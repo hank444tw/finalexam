@@ -11,14 +11,21 @@ namespace FinalExam.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Member
     {
+        
         public int Id { get; set; }
+        [Required]
         public string Mem_id { get; set; }
+        [Required]
         public string Mem_password { get; set; }
+        [Required]
         public string Name { get; set; }
-        public string Mem_RePassword { get; set; }
+        [Required]
+        [StringLength(10)]
         public string Phone { get; set; }
+
     }
 }

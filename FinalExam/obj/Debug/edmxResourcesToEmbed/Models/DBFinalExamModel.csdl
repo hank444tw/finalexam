@@ -1,23 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DBFinalExamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="DBFinalExamEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Member" EntityType="DBFinalExamModel.Member" />
     <EntitySet Name="Order" EntityType="DBFinalExamModel.Order" />
     <EntitySet Name="Product" EntityType="DBFinalExamModel.Product" />
     <EntitySet Name="ProductImage" EntityType="DBFinalExamModel.ProductImage" />
     <EntitySet Name="BigOrder" EntityType="DBFinalExamModel.BigOrder" />
+    <EntitySet Name="Member" EntityType="DBFinalExamModel.Member" />
   </EntityContainer>
-  <EntityType Name="Member">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Mem_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Mem_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Mem_RePassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-  </EntityType>
   <EntityType Name="Order">
     <Key>
       <PropertyRef Name="Id" />
@@ -59,5 +48,15 @@
     <Property Name="Money" Type="Int32" />
     <Property Name="BuyDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="MamberName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Mem_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mem_password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
   </EntityType>
 </Schema>
