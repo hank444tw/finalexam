@@ -2,10 +2,10 @@
 > _大四上_友鋒課期末分組作業_   
 
 * 功能說明
-  1. 購物車系統。
-  2. 會員系統。
-  3. 訂單管理系統。
-  4. 商品管理系統。
+  1. 購物車系統(購物下單，購物車結帳)。
+  2. 會員系統(註冊、登入、修改會員資料、查詢訂單)。
+  3. 訂單管理系統(查看每筆訂單之品項及訂購人)。
+  4. 商品管理系統(可針對商品CRUD，並最多新增三組圖片，用作產品頁面輪播)。
  
 * 使用技術
   1. ASP.NET MVC
@@ -18,9 +18,9 @@
 * 程式架構
   |        | 說明 |程式 |
   |------- |:-----|:------:|
-  | **前端**   |  1. 介面主要使用`bootstrap`進行設計，電子書閱讀頁面則是老師提供之網頁樣板。</br>2. 使用`js`讓在管理電子書圖片時，可以一直新增圖片，並且頁數即時更新。</br>3. 以`Razor`語法將後端傳回之資訊，動態呈現於網頁。 |  [程式碼](https://github.com/hank444tw/1119Work/tree/master/1119Work/Views) |
-  | **後端**   |  1. 會員系統(註冊、登入、登出、會員管理)。 </br> 2. 電子書CRUD。</br> 3. 電子書圖片管理(移動順序、新增、刪除)。</br> 4. 以`LINQ`語法透過`model`，對資料庫進行存取。 |  [程式碼](https://github.com/hank444tw/1119Work/blob/master/1119Work/Controllers/HomeController.cs) |
-  | **資料庫** |  1. 使用`ASP.NET MVC`的`Entity Framework`進行資料庫設計。</br> 2. 建置`Model`來對資料庫進行存取。 |   [程式碼](https://github.com/hank444tw/1119Work/tree/master/1119Work/Models) |     
+  | **前端**   |  1. 前端主要由組員負責 |  [程式碼](https://github.com/hank444tw/finalexam/tree/new_master/FinalExam/Views) |
+  | **後端**   |  1. 以`LINQ`語法透過`model`，對資料庫進行存取。 </br> 2. 每張訂單編號，皆是由`Guid`隨機產生。</br> 3. 若店家新增商品皆未上傳圖片，則以預設圖片替代;若有的話則以第一張作為商品封面。</br>4. 將由model取得之資料，以串列形式回傳前端。 |  [程式碼](https://github.com/hank444tw/finalexam/blob/new_master/FinalExam/Controllers/HomeController.cs) |
+  | **資料庫** |  1. 使用`ASP.NET MVC`的`Entity Framework`進行資料庫設計。</br> 2. 建置`Model`來對資料庫進行存取。 |   [程式碼](https://github.com/hank444tw/finalexam/tree/new_master/FinalExam/Models) |     
 
 * 網站截圖
 <img src="https://github.com/hank444tw/finalexam/blob/new_master/banner.JPG" stryle="float:right" />  
