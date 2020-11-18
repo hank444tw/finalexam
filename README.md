@@ -21,7 +21,7 @@
   | **前端**   |  1. 前端主要由組員負責 |  [程式碼](https://github.com/hank444tw/finalexam/tree/new_master/FinalExam/Views) |
   | **後端**   |  1. 以`LINQ`語法透過`model`，對資料庫進行存取。</br> 2. 每張訂單編號，皆是由`Guid`隨機產生。</br> 3. 若店家新增商品皆未上傳圖片，則以預設圖片替代;若有的話則以第一張作為商品封面。</br>4. 將由`model`取得之資料，以串列形式回傳前端。 |  [程式碼](https://github.com/hank444tw/finalexam/blob/new_master/FinalExam/Controllers/HomeController.cs) |
   | **資料庫** |  1. 使用`ASP.NET MVC`的`Entity Framework`進行資料庫設計。</br> 2. 建置`model`來對資料庫進行存取。 |   [程式碼](https://github.com/hank444tw/finalexam/tree/new_master/FinalExam/Models) | 
-  | **版本控制** |  1. ，使用`git`搭配`sourcetree`工具實施版本控制</br> 2. 一人負責前端，一人後端，兩人做完後再merge。 |   [程式碼](https://github.com/hank444tw/finalexam/tree/new_master/FinalExam/Models) | 
+  | **版控** |  1. ，使用`git`搭配`sourcetree`工具實施版本控制</br> 2. 一人負責前端，一人後端，兩人做完後再merge。 |   [程式碼](https://github.com/hank444tw/finalexam/tree/new_master/FinalExam/Models) | 
 
 * 網站截圖
 <img src="https://github.com/hank444tw/finalexam/blob/new_master/banner.JPG" stryle="float:right" />  
