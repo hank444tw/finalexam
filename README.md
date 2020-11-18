@@ -23,16 +23,8 @@
   | **資料庫** |  1. 使用`ASP.NET MVC`的`Entity Framework`進行資料庫設計。</br> 2. 建置`Model`來對資料庫進行存取。 |   [程式碼](https://github.com/hank444tw/1119Work/tree/master/1119Work/Models) |     
 
 * 網站截圖
-<img src="https://github.com/hank444tw/1119Work/blob/master/banner1.JPG" stryle="float:right" />  
+<img src="https://github.com/hank444tw/finalexam/blob/new_master/banner.JPG" stryle="float:right" />  
 
-<img src="https://github.com/hank444tw/1119Work/blob/master/banner.JPG" stryle="float:right" />    
+<img src="https://github.com/hank444tw/finalexam/blob/new_master/banner1.JPG" stryle="float:right" />    
 
-<img src="https://github.com/hank444tw/1119Work/blob/master/banner2.JPG" stryle="float:right" />
-
-
-
-# finalexam
-大四上_友鋒課期末分組作業_購物車Web
-![image](https://github.com/hank444tw/finalexam/blob/new_master/banner.JPG)
-![image](https://github.com/hank444tw/finalexam/blob/new_master/banner1.JPG)
-![image](https://github.com/hank444tw/finalexam/blob/new_master/banner2.JPG)
+<img src="https://github.com/hank444tw/finalexam/blob/new_master/banner2.JPG" stryle="float:right" />
